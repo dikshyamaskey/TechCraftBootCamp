@@ -11,23 +11,35 @@ namespace Techcraft
    
     public  class Customer1 : ParentCustomer
     {
+        public override void AddCustomer()
+        {
+            Console.WriteLine($" Customer Type :{customerType}");
 
+            Console.WriteLine($" Name :{fullName} Address: {address} MobNum: {mobNumber}");
+        }
     }
     public class Customer2 : ParentCustomer
     {
 
-        string _billNumber, _billAmt;
-        public Customer2( string billNumber, string billAmt)
+        public override void AddCustomer()
         {
-            _billNumber = billNumber;
-            _billAmt = billAmt;
+           
+            if (string.IsNullOrEmpty(billNumber) || string.IsNullOrEmpty(billAmt))
+            {
+                if (string.IsNullOrEmpty(billNumber))
+                {
+                    Console.WriteLine("Bill Number Cannot be empty");
+                }
+                if (string.IsNullOrEmpty(billAmt))
+                {
+                    Console.WriteLine("Bill Amount Cannot be empty");
 
-        }
-
-        public override void AddCostumer()
-        {
+                }
+                Console.ReadKey();
+                return;
+            }
             Console.WriteLine($" Customer Type :{customerType}");
-            Console.WriteLine($"Name :{fullName} Address {address} MobNum {mobNumber} BillNum {_billNumber} BillAmount {_billAmt}");
+            Console.WriteLine($" Name :{fullName} Address {address} MobNum: {mobNumber} BillNum: {billNumber} BillAmount: {billAmt}");
 
         }
 
@@ -38,13 +50,11 @@ namespace Techcraft
     {
        public int customerType;
      public   string fullName, address, mobNumber;
+     public   string billNumber, billAmt;
 
-        public virtual void AddCostumer()
-        {
-            Console.WriteLine($" Customer Type :{customerType}");
 
-            Console.WriteLine($"Name :{fullName} Address {address} MobNum {mobNumber}");
-        }
+        public virtual void AddCustomer() { }
+        
     }
 
  

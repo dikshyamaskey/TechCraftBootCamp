@@ -10,7 +10,7 @@ public class HelloWorld
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine("Enter Customer Type  : ");
+        Console.WriteLine("Enter Customer Type 1 or 2 : ");
        int customerType =int.Parse(Console.ReadLine());
         Console.WriteLine("Enter Customer Name: ");
         string name = Console.ReadLine();
@@ -18,46 +18,39 @@ public class HelloWorld
         string address = Console.ReadLine();
         Console.WriteLine("Enter Customer Mob: ");
         string mob = Console.ReadLine();
-       
+        Console.WriteLine("Enter Customer billAdd: ");
+        string billNumber = Console.ReadLine();
+        Console.WriteLine("Enter billAmt: ");
+        string bilAMt = Console.ReadLine();
 
-        ParentCustomer customer = new ParentCustomer();
-        customer.customerType = customerType;
-        customer.address = address;
-        customer.fullName = name;
-        customer.mobNumber = mob;
-        if(customerType == 1)
+        var obj = new CustomerObject().CreateCustomerObject(customerType);
+        obj.customerType = customerType;
+        obj.address = address;
+        obj.fullName = name;
+        obj.mobNumber = mob;
+        obj.billNumber = billNumber;
+        obj.billAmt = bilAMt;
+        obj.AddCustomer();
+        Console.ReadKey();
+        }
+
+
+}
+public class CustomerObject
+{
+    public ParentCustomer CreateCustomerObject(int customerType)
+    {
+        ParentCustomer customerObj = null;
+
+        if (customerType == 1)
         {
-            customer = new Customer1();
-            customer.AddCostumer();
+            customerObj = new Customer1();
 
         }
         else if (customerType == 2)
         {
-            Console.WriteLine("Enter Customer billAdd: ");
-            string billNumber = Console.ReadLine();
-            Console.WriteLine("Enter billAmt: ");
-            string bilAMt = Console.ReadLine();
-            if(string.IsNullOrEmpty(billNumber) || string.IsNullOrEmpty(bilAMt)){
-                if (string.IsNullOrEmpty(billNumber))
-                {
-                    Console.WriteLine("Bill Number Cannot be empty");
-                }
-                if (string.IsNullOrEmpty(bilAMt))
-                {
-                    Console.WriteLine("Bill Amount Cannot be empty");
-
-                }
-                Console.ReadKey();
-                return;
-            }
-           
-
-            customer = new Customer2(billNumber,bilAMt);
-            customer.AddCostumer();
-
+            customerObj = new Customer2();
         }
-        Console.ReadKey();
-      
-
+        return customerObj;
     }
 }
