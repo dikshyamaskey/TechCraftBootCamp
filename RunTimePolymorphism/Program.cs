@@ -1,7 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-// Online C# Editor for free
-// Write, Edit and Run your C# code using C# Online Compiler
-
+﻿
 using System;
 using System.Xml.Linq;
 using Techcraft;
@@ -21,36 +18,29 @@ public class HelloWorld
         Console.WriteLine("Enter Customer billAdd: ");
         string billNumber = Console.ReadLine();
         Console.WriteLine("Enter billAmt: ");
-        string bilAMt = Console.ReadLine();
+        string bilAmt = Console.ReadLine();
 
-        var obj = new CustomerObject().CreateCustomerObject(customerType);
+        var obj = new CustomerObject().GetCustomerObject(customerType);
         obj.customerType = customerType;
         obj.address = address;
         obj.fullName = name;
         obj.mobNumber = mob;
         obj.billNumber = billNumber;
-        obj.billAmt = bilAMt;
+        obj.billAmt = bilAmt;
         obj.AddCustomer();
         Console.ReadKey();
-        }
-
+    }
 
 }
 public class CustomerObject
 {
-    public ParentCustomer CreateCustomerObject(int customerType)
+    private Dictionary<int, Func<ParentCustomer>> CreateCustomerObject = new Dictionary<int, Func<ParentCustomer>>
+                                                                        {
+                                                                           { 1, () => new Customer1() },
+                                                                           { 2, () => new Customer2()},
+    };
+    public ParentCustomer GetCustomerObject(int customerType)
     {
-        ParentCustomer customerObj = null;
-
-        if (customerType == 1)
-        {
-            customerObj = new Customer1();
-
-        }
-        else if (customerType == 2)
-        {
-            customerObj = new Customer2();
-        }
-        return customerObj;
+       return  CreateCustomerObject[customerType]();
     }
 }

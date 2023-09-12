@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expressiontree", "Expressio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RunTimePolymorphism", "RunTimePolymorphism\RunTimePolymorphism.csproj", "{F40FC708-1B3E-41AA-AEFF-E191D29F5AA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingeltonvsStatic", "SingeltonvsStatic\SingeltonvsStatic.csproj", "{BF620593-1D83-4DB3-873A-339B05C1EB20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F40FC708-1B3E-41AA-AEFF-E191D29F5AA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F40FC708-1B3E-41AA-AEFF-E191D29F5AA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F40FC708-1B3E-41AA-AEFF-E191D29F5AA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF620593-1D83-4DB3-873A-339B05C1EB20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF620593-1D83-4DB3-873A-339B05C1EB20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF620593-1D83-4DB3-873A-339B05C1EB20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF620593-1D83-4DB3-873A-339B05C1EB20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
